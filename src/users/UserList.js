@@ -16,14 +16,14 @@ const UserList = () => {
     // ]
 
     const DeleteHandler = (id) => {
-        dispatch(deleteUser({id}))
+        dispatch(deleteUser({ id }))
     }
     const renderCart = () => users.map((user) => (
         <tr key={user.id}>
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td><Link to={`edit-user/${user.id}`}><i className="bi bi-pencil-square"></i></Link></td>
-            <td ><button onClick={()=>DeleteHandler(user.id)}><i className="bi bi-trash3-fill"></i></button></td>
+            <td ><button onClick={() => DeleteHandler(user.id)}><i className="bi bi-trash3-fill"></i></button></td>
         </tr>
     ))
     // deleteUser

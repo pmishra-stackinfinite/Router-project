@@ -1,5 +1,5 @@
 import React from 'react'
-import TextField from './TextField'
+// import TextField from './TextField'
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -12,40 +12,32 @@ const AddUSer = ({ lable, inputProps }) => {
     const dispatch = useDispatch()
     const navigator = useNavigate()
 
-    const [value, setvalue] = useState({
+    const [value, setValue] = useState({
         name: "",
         email: ""
     })
 
 
     const userHandler = () => {
-        setvalue({ name: "", email: "" })
+        setValue({ name: "", email: "" })
         console.log(value)
         dispatch(addUser({
             id: uuidv4(),
             name: value.name,
             email: value.email
         }))
-        
+
         navigator("/")
     }
-
-
     return (
         <div>
-            <TextField
-                lable="Name"
-                inputProps={{ type: "text", placeholder: "pramod" }}
-                value={value.name}
-                onchange={(e) => setvalue({ ...value, name: e.target.value })}
-            /><br />
+            <h1>Add Your data</h1>
+            <input lable="name" value={value.name} text="text" placeholder='pramod'
+                onChange={(e) => setValue({ ...value, name:e.target.value })} />
 
-            <TextField
-                lable="Email"
-                value={value.email}
-                inputProps={{ type: "email", placeholder: "pramod@gmail.com" }}
-                onchange={(e) => setvalue({ ...value, email: e.target.value })}
-            /><br />
+            <br/><br/>
+            <input lable="Email" value={value.email} text="text" placeholder="pramod@gmail.com"
+                onChange={(e) => setValue({ ...value, email:e.target.value })} /><br/><br/>
             <button onClick={userHandler}>Submit</button>
         </div>
     )
